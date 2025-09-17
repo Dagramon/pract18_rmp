@@ -1,5 +1,6 @@
 package com.example.pract_18_2
 
+import android.annotation.SuppressLint
 import android.content.SharedPreferences
 import android.graphics.Color
 import android.os.Bundle
@@ -13,6 +14,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.TextView
 import android.widget.Toast
 import com.example.pract_18_2.databinding.ActivityMainBinding
 
@@ -21,6 +23,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
     private lateinit var sharedPref : SharedPreferences
+    private lateinit var clicksText : TextView
+    private var counter = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +36,11 @@ class MainActivity : AppCompatActivity() {
 
         sharedPref = getSharedPreferences("CountPref", MODE_PRIVATE)
 
+        counter = sharedPref.getInt("CountPref", 0)
+
+        clicksText = findViewById(R.id.ClicksText)
+
+        clicksText.text = "Нажатий $counter"
 
         binding.fab.setOnClickListener { view ->
             Snackbar.make(view, "Вы нажали на FloatingActionButton", Snackbar.LENGTH_LONG)
@@ -89,8 +98,6 @@ class MainActivity : AppCompatActivity() {
     }
     fun OnClick3(view: View) {
 
-        var counter = sharedPref.getInt("CountPref", 0)
-
         counter++
 
         var snackbar = Snackbar.make(
@@ -101,6 +108,7 @@ class MainActivity : AppCompatActivity() {
         )
         snackbar.setTextColor(Color.GREEN)
         snackbar.show()
+        clicksText.text = "Нажатий $counter"
 
         with(sharedPref.edit())
         {
