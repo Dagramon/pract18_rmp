@@ -1,7 +1,9 @@
 package com.example.pract_18_2
 
+import android.content.SharedPreferences
 import android.graphics.Color
 import android.os.Bundle
+import android.os.SharedMemory
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -18,6 +20,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
+    private lateinit var sharedPref : SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +29,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setSupportActionBar(binding.toolbar)
+
+        sharedPref = getSharedPreferences("CountPref", MODE_PRIVATE)
 
 
         binding.fab.setOnClickListener { view ->
@@ -71,20 +76,30 @@ class MainActivity : AppCompatActivity() {
 
         )
         snackbar.setAction("Кнопка", View.OnClickListener {  })
+        snackbar.setActionTextColor(Color.MAGENTA)
         snackbar.show()
 
     }
     fun OnClick3(view: View) {
 
+        var counter = sharedPref.getInt("CountPref", 0)
+
+        counter++
+
         var snackbar = Snackbar.make(
             view,
-            "Нестандартная кнопка",
-            Snackbar.LENGTH_LONG
+            "Нестандартная кнопка Нажата: $counter раз",
+            Snackbar.LENGTH_LONG,
 
         )
-        snackbar.setAction("Кнопка", View.OnClickListener {  })
-        snackbar.setActionTextColor(Color.MAGENTA)
+        snackbar.setTextColor(Color.GREEN)
         snackbar.show()
+
+        with(sharedPref.edit())
+        {
+            putInt("CountPref", counter)
+            apply()
+        }
 
     }
 }
