@@ -12,7 +12,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Стандартный snackbar"
+        android:text="@string/snackbar"
         android:onClick="OnClick"
         />
     <Button
@@ -22,7 +22,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Snackbar с кнопкой"
+        android:text="@string/snackbar_button"
         android:onClick="OnClick2"
         />
     <Button
@@ -31,7 +31,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Нестандартный snackbar со счётчиком"
+        android:text="@string/snackbar_counter"
         android:onClick="OnClick3"
         />
 </androidx.constraintlayout.widget.ConstraintLayout>

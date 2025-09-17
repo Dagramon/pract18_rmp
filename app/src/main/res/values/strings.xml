@@ -43,4 +43,7 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
+    <string name="snackbar">Стандартный snackbar</string>
+    <string name="snackbar_button">Snackbar с кнопкой</string>
+    <string name="snackbar_counter">Нестандартный snackbar со счётчиком</string>
 </resources>

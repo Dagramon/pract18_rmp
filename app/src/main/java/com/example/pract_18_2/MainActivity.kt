@@ -75,7 +75,14 @@ class MainActivity : AppCompatActivity() {
             Snackbar.LENGTH_LONG
 
         )
-        snackbar.setAction("Кнопка", View.OnClickListener {  })
+
+        snackbar.setAction("Кнопка", View.OnClickListener {
+            Toast.makeText(
+                this,
+                "Кнопка нажата",
+                Toast.LENGTH_SHORT
+            ).show()
+        })
         snackbar.setActionTextColor(Color.MAGENTA)
         snackbar.show()
 
